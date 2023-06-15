@@ -12,8 +12,7 @@ def all_prime(m ,n) :
       print(i)
 
 def main():
-  m = int(input())
-  n = int(input())
+  m, n = map(int, input().split())
   print(all_prime(m, n))
 
 if __name__== "__main__" :
