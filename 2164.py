@@ -3,9 +3,8 @@ def main() :
   n_list = list(range(1, N + 1))
 
   while (len(n_list) > 1) :
-    first_item = n_list[1]
-    n_list = n_list[2:]
-    n_list.append(first_item)
+    n_list.pop(0)
+    n_list.append(n_list.pop(0))
   
   print(n_list[0])
 
