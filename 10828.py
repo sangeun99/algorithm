@@ -1,3 +1,5 @@
+import sys
+
 def push(stack, x) :
   stack.append(x)
 
@@ -5,8 +7,7 @@ def pop(stack):
   if (len(stack) == 0) :
     print(-1)
   else :
-    print(stack[len(stack)-1])
-    stack = stack.pop()
+    print(stack.pop())
 
 def size(stack):
   print(len(stack))
@@ -25,9 +26,9 @@ def top(stack):
 
 def main():
   stack = []
-  N = int(input())
+  N = int(sys.stdin.readline())
   for i in range(N) :
-    cmd_input = input().split()
+    cmd_input = sys.stdin.readline().split()
     cmd = cmd_input[0]
     if cmd == 'push' :
       x = int(cmd_input[1])
