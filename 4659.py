@@ -31,8 +31,8 @@ def main():
     if (password == "end") :
       exit()
     elif (nicePassword(password)) :
-      print('<{}> is accptable'.format(password))
+      print('<{}> is acceptable.'.format(password))
     else :
-      print('<{}> is not accptable'.format(password))
+      print('<{}> is not acceptable.'.format(password))
 if __name__ == "__main__" :
   main()
