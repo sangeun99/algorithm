@@ -10,8 +10,11 @@ def partOfStr(part, str) :
     return False
 
 while 1 :
-    s, t = sys.stdin.readline().split()
-    if (partOfStr(s,t)) :
-        print('Yes')
-    else :
-        print('No')
+    try : 
+        s, t = sys.stdin.readline().split()
+        if partOfStr(s,t) :
+            print('Yes')            
+        else :
+            print('No')
+    except :
+        break
