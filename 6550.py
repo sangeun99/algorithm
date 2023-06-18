@@ -7,7 +7,11 @@ def partOfStr(part, str) :
             return True
         elif part[counter] == i :
             counter += 1
-    return False
+
+    if  counter == len(part):
+        return True
+    else :
+        return False
 
 while 1 :
     try : 
