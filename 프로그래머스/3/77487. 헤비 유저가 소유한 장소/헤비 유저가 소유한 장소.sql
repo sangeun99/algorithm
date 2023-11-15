@@ -1,7 +1,7 @@
 SELECT  ID, NAME, HOST_ID
 FROM    PLACES
-WHERE   HOST_ID IN (SELECT  HOST_ID
+WHERE   HOST_ID IN  (SELECT  HOST_ID
                     FROM    PLACES
                     GROUP   BY HOST_ID
-                    HAVING  COUNT(HOST_ID) >= 2)
+                    HAVING  COUNT(ID) >= 2)
 ORDER   BY ID;
