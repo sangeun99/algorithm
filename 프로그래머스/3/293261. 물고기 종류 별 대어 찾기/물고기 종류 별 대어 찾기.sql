@@ -1,0 +1,9 @@
+SELECT  A.ID, N.FISH_NAME, A.LENGTH
+FROM    FISH_INFO A
+INNER   JOIN FISH_NAME_INFO N
+ON      N.FISH_TYPE = A.FISH_TYPE
+WHERE   A.LENGTH >= ALL(SELECT  B.LENGTH
+                        FROM    FISH_INFO B
+                        WHERE   A.FISH_TYPE = B.FISH_TYPE
+                        AND     B.LENGTH IS NOT NULL)
+ORDER   BY A.ID ASC
