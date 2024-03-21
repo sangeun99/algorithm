@@ -1,20 +1,11 @@
-def solution(numbers, target):            
+from itertools import product
+
+def solution(numbers, target):
     answer = 0
-    r = [-1 * (target)]
-    for i in range(len(numbers)):
-        new_r = []
-        # i번째 원소로 계산 numbers[i]
-        # result를 이용해 2^(i+1)번 계산 필요
-        for j in r:
-            left = j + numbers[i]
-            right = j - numbers[i]
-            if (i == len(numbers) - 1):
-                if (left == 0):
-                    answer += 1
-                if (right == 0):
-                    answer += 1
-            else:
-                new_r.append(left)
-                new_r.append(right)
-        r = new_r
+    for i in list(product([-1, 1], repeat=len(numbers))):
+        s = 0
+        for j in range(len(numbers)):
+            s += i[j] * numbers[j]
+        if s == target:
+            answer += 1
     return answer
