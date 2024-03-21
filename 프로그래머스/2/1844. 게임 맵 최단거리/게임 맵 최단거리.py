@@ -1,21 +1,23 @@
 from collections import deque
 
 def solution(maps):
+    answer = -1
     n = len(maps)
     m = len(maps[0])
-    q = deque([[n-1, m-1, 1]]) # 1은 지나친 칸수
-    
-    directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
-    
+    visited = [[0 for _ in range(m)] for _ in range(n)]
+    q = deque([(0, 0, 1)]) # 행, 열, 거리
+    move = [(0, 1), (1, 0), (0, -1), (-1, 0)]
     while q:
-        r, c, d = q.popleft()        
-        if r == 0 and c == 0:
-            return d
-        elif (maps[r][c] == 1):
-            maps[r][c] = 2 # 방문한 자리
-            for i in range(4):
-                new_r = r + directions[i][0]
-                new_c = c + directions[i][1]
-                if 0 <= new_r < n and 0 <= new_c < m and maps[new_r][new_c] == 1:
-                    q.append([new_r, new_c, d + 1])
-    return -1
+        i, j, d = q.popleft()
+        if i == n-1 and j == m-1:
+            answer = d
+            break
+        if visited[i][j] == 1:
+            continue
+        visited[i][j] = 1
+        for k in range(4):
+            n_i = i + move[k][0]
+            n_j = j + move[k][1]
+            if 0 <= n_i < n and 0 <= n_j < m and maps[n_i][n_j] == 1 and visited[n_i][n_j] == 0:
+                q.append((n_i, n_j, d+1))
+    return answer
